@@ -30,7 +30,7 @@ results.
 **Requirements**
 
 
-R version 4.3.2 \
+R version 4.3.2\
 RStudio version 2023.09.1+494\
 Packages:\
 library(clusterProfiler)
@@ -40,5 +40,8 @@ library(ReactomePA)\
 library(ggplot2)\
 library(dplyr)\
 library(openxlsx)\
+library(MASS)\
+library(igraph)\
+
 
 
