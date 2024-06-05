@@ -33,15 +33,19 @@ results.
 R version 4.3.2\
 RStudio version 2023.09.1+494\
 Packages:\
-library(clusterProfiler)
-library(org.Hs.eg.db)\
-library(biomaRt)\
-library(ReactomePA)\
-library(ggplot2)\
-library(dplyr)\
-library(openxlsx)\
-library(MASS)\
-library(igraph)\
+igraph version 2.0.3\
+MASS version 7.3.60.0.1\
+parallel version 4.3.2\
+dplyr version 1.1.4\
+clusterProfiler version 4.10.0\
+org.Hs.eg.db version 3.18.0\
+ggplot2 version 3.5.0\
+openxlsx version 4.2.5.2\
+biomaRt version 2.58.2\
+ReactomePA version 1.46.0
+
+
+
 
 
 
