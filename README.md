@@ -32,14 +32,14 @@ The scripts that reproduce the validations including comparing ADR-related prote
 
 ```
 DREAMER
-├── data
-│   ├── Knowledge graph
-│   ├── pre-processed data
-│   └── other resources
-├── scripts
-│   ├── main
-│   ├── validation
-│   └── visualization
+├── data/
+│   ├── Knowledge graph/
+│   ├── pre-processed data/
+│   └── other resources/
+├── scripts/
+│   ├── main/
+│   ├── validation/
+│   └── visualization/
 └── README.md
 ```
 
