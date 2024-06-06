@@ -43,7 +43,7 @@ DREAMER
 └── README.md
 ```
 
-## How to Cite Us in the Future
+## How to Cite Us in the Future (Manuscript is under review)
 
 If you use DREAMER in your research, please cite our work as follows:
 
