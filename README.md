@@ -23,26 +23,26 @@ All the data are available in the `Data/` folder and all the scripts are availab
 - biomaRt version 2.58.2
 - ReactomePA version 1.46.0
 
-The scripts that reproduce the ADR-related proteins, DP-related proteins, and ADR-DP-related proteins as well as controlling for confounding effects of indications of drugs are provided in the `Scripts/Main_Analysis` folder.
-The scripts that reproduce the figures, tables and ADR-related proteins, DP-related proteins, and ADR-DP-related proteins as well as controlling for confounding effects of indications of drugs are provided in the `Scripts/Main_Analysis` folder.
-The scripts that reproduce the holdout validations are provided in the `Scripts/Holdout_Analysis` folder.
-
+The scripts that reproduce the ADR-related proteins, DP-related proteins, and ADR-DP-related proteins as well as controlling for confounding effects of indications of drugs are provided in the `scripts/main` folder.
+The scripts that reproduce the figures and tables are provided in the `scripts/visualization` folder.
+The scripts that reproduce the validations including comparing ADR-related proteins and DP-related proteins with the baseline method and holdout validation method are provided in the `scripts/validation` folder.
 
 
 ### Folder Structure
 
 ```
 DREAMER
-├── Data
-│   ├── 
-│   ├── 
-│   └── 
-├── Scripts
+├── data
+│   ├── Knowledge graph
+│   ├── pre-processed data
+│   └── other resources
+├── scripts
 │   ├── main
 │   ├── validation
 │   └── visualization
 └── README.md
 ```
+
 ## How to Cite Us in the Future
 
 If you use DREAMER in your research, please cite our work as follows:
@@ -60,14 +60,4 @@ Farzaneh Firoozbakht. (202.). DREAMER: Exploring Common Mechanisms of Adverse Dr
   publisher={-},
   doi={-}
 }
-
-
-
-
-
-
-
-
-
-
 
