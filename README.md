@@ -22,6 +22,7 @@ All the data are available in the `Data/` folder and all the scripts are availab
 - openxlsx version 4.2.5.2
 - biomaRt version 2.58.2
 - ReactomePA version 1.46.0
+- writexl version 1.5.0
 
 The scripts that reproduce the ADR-related proteins, DP-related proteins, and ADR-DP-related proteins as well as controlling for confounding effects of indications of drugs are provided in the `scripts/main` folder.
 The scripts that reproduce the figures and tables are provided in the `scripts/visualization` folder.
@@ -33,9 +34,9 @@ The scripts that reproduce the validations including comparing ADR-related prote
 ```
 DREAMER
 ├── data/
-│   ├── Knowledge graph/
-│   ├── pre-processed data/
-│   └── other resources/
+│   ├── Knowledge_graph/
+│   ├── preprocessed_graph/
+│   └── other_resources/
 ├── scripts/
 │   ├── main/
 │   ├── validation/
