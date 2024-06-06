@@ -1,15 +1,15 @@
 rm(list=ls())
 library(igraph)
 
-Positive_Negative_DrugsDiseases = readRDS("Data/Positive_Negative_DrugsDiseases_Holdout_Analysis.rds")
+Positive_Negative_DrugsDiseases = readRDS("data/Positive_Negative_DrugsDiseases_Holdout_Analysis.rds")
 
-ADRDP_Proteins_Holdout = readRDS("Data/ADRDP_Proteins_Holdout.rds")
+ADRDP_Proteins_Holdout = readRDS("data/ADRDP_Proteins_Holdout.rds")
 ADRs = names(ADRDP_Proteins_Holdout)
 
-disease_gene = readRDS("Data/disease_gene_protein.rds")
+disease_gene = readRDS("data/disease_gene_protein.rds")
 disease_gene$entrez_id_disaese = as.character(disease_gene$entrez_id_disaese)
 
-PPI = read.csv("Data/PPI_STRING.csv")
+PPI = read.csv("data/PPI_STRING.csv")
 PPI_Graph = graph_from_data_frame(PPI, directed = FALSE)
 PPI_Graph = simplify(PPI_Graph, remove.loops = TRUE, remove.multiple = TRUE)
 
@@ -72,5 +72,5 @@ for(i in ADRs){
 }
 
 
-saveRDS(ShortestPath, "Data/Shortest_path_diseases.rds")
+saveRDS(ShortestPath, "data/Shortest_path_diseases.rds")
 

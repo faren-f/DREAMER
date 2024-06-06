@@ -2,16 +2,16 @@ rm(list = ls())
 library(igraph)
 
 # Read network
-drug_ADR = readRDS("Data/drug_ADR.rds")
-drug_target = readRDS("Data/drug_target.rds")
-disease_symptom = readRDS("Data/disease_symptom.rds")
-disease_gene_protein = readRDS("Data/disease_gene_protein.rds")
+drug_ADR = readRDS("data/preprocessed_graph/drug_ADR.rds")
+drug_target = readRDS("data/preprocessed_graph/drug_target.rds")
+disease_symptom = readRDS("data/preprocessed_graph/disease_symptom.rds")
+disease_gene_protein = readRDS("data/preprocessed_graph/disease_gene_protein.rds")
 
 # all ADRs
 ADRs = unique(drug_ADR$meddra_id)
 
 #Read STRING PPI
-PPI = read.csv("Data/PPI_STRING.csv")
+PPI = read.csv("data/knowledge_graph/PPI_STRING.csv")
 PPI_Graph = graph_from_data_frame(PPI, directed = FALSE)
 PPI_Graph = simplify(PPI_Graph, remove.loops = TRUE, remove.multiple = TRUE)
 
@@ -95,4 +95,4 @@ for(i in ADRs){
   }
 }
 
-saveRDS(scores, "Data/ProteinScores_DiffusedFromDrugSideDiseasesSide_STRING.rds")
+saveRDS(scores, "data/ProteinScores_DiffusedFromDrugSideDiseasesSide_STRING.rds")

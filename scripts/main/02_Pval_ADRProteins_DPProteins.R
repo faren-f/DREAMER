@@ -2,9 +2,9 @@ rm(list = ls())
 library(MASS)
 library(igraph)
 
-Scores = readRDS("Data/ProteinScores_DiffusedFromDrugSideDiseasesSide_STRING.rds")
+Scores = readRDS("data/ProteinScores_DiffusedFromDrugSideDiseasesSide_STRING.rds")
 
-PPI = read.csv("Data/PPI_STRING.csv")
+PPI = read.csv("data/knowledge_graph/PPI_STRING.csv")
 PPI_Graph = graph_from_data_frame(PPI, directed = FALSE)
 PPI_Graph = simplify(PPI_Graph, remove.loops = TRUE, remove.multiple = TRUE)
 
@@ -46,7 +46,7 @@ for(i in names(Scores)){
   Pvalues[[i]][["DP_Protein"]] = qval_DP_protein
 }
 
-saveRDS(Pvalues, "Data/Pval_ADRProteins_DPProteins.rds")
+saveRDS(Pvalues, "data/Pval_ADRProteins_DPProteins.rds")
 
 
 

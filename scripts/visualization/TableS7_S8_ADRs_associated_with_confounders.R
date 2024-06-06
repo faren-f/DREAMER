@@ -1,15 +1,15 @@
 rm(list = ls())
 library(openxlsx)
 
-drug_ADR = readRDS("Data/drug_ADR.rds")
+drug_ADR = readRDS("data/preprocessed_graph/drug_ADR.rds")
 
-ADRs_withSignificantOverlap_afterDrugRemovalSameOrgan = readRDS("Data/ADRs_withSignificantOverlap_afterDrugRemovalSameOrgan.rds")
-ADRDP_Proteins = readRDS("Data/ADRDP_Proteins.rds")
+ADRs_withSignificantOverlap_afterDrugRemovalSameOrgan = readRDS("data/ADRs_withSignificantOverlap_afterDrugRemovalSameOrgan.rds")
+ADRDP_Proteins = readRDS("data/ADRDP_Proteins.rds")
 
-ADRDP_Proteins_AfterDrugRemoval = readRDS("Data/ADRDP_Proteins_AfterDrugRemoval.rds")
+ADRDP_Proteins_AfterDrugRemoval = readRDS("data/ADRDP_Proteins_AfterDrugRemoval.rds")
 ADRDP_Proteins_AfterDrugRemoval = ADRDP_Proteins_AfterDrugRemoval[ADRs_withSignificantOverlap_afterDrugRemovalSameOrgan]
 
-ADRs_afterOrganRemoval = readRDS("Data/ADRs_afterOrganRemoval.rds")
+ADRs_afterOrganRemoval = readRDS("data/ADRs_afterOrganRemoval.rds")
 ADR_associated = ADRs_afterOrganRemoval[!(ADRs_afterOrganRemoval %in% intersect(names(ADRDP_Proteins_AfterDrugRemoval), ADRs_afterOrganRemoval))]
 No_overlapping_drugs_after_removal = names(ADRDP_Proteins)[!(names(ADRDP_Proteins) %in% ADRs_afterOrganRemoval)]
 
@@ -21,8 +21,8 @@ colnames(ADR_table)[2] = "Organ_Confounding_Control"
 
 
 #########Indication-diffused Control
-indication_proteins = readRDS("Data/Indication_Proteins.rds")
-significant_ADRName_Indication = readRDS("Data/significant_ADRName_Indication.rds")
+indication_proteins = readRDS("data/Indication_Proteins.rds")
+significant_ADRName_Indication = readRDS("data/significant_ADRName_Indication.rds")
 significant_ADRName_Indication = unique(drug_se[drug_se$se_name %in% significant_ADRName_Indication, 2])
 
 
@@ -34,9 +34,9 @@ Non_associted_to_indications = names(indication_proteins)[!names(indication_prot
 ADR_table[ADR_table$ADR_name %in% Non_associted_to_indications,3] = "No association with indications-related proteins"
 colnames(ADR_table)[3] = "Confounding_control_after_indication_diffused"
 
-write.table(ADR_table, "Data/TableS7_ADRs_associatedWith_Confounders_STRING.csv", 
+write.table(ADR_table, "data/TableS7_ADRs_associatedWith_Confounders_STRING.csv", 
             sep = ",", row.names = FALSE)
-write.xlsx(ADR_table, file = "Data/TableS7_ADRs_associatedWith_Confounders_STRING.xlsx")
+write.xlsx(ADR_table, file = "data/TableS7_ADRs_associatedWith_Confounders_STRING.xlsx")
 
 
 

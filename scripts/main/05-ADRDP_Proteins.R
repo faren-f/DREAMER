@@ -1,7 +1,7 @@
 rm(list = ls())
 
-N_proteins = readRDS("Data/N_proteins.rds")
-ADRDP_Proteins_before_HGTest = readRDS("Data/ADRDP_Proteins_before_HGTest.rds")
+N_proteins = readRDS("data/N_proteins.rds")
+ADRDP_Proteins_before_HGTest = readRDS("data/ADRDP_Proteins_before_HGTest.rds")
 rownames(N_proteins) = names(ADRDP_Proteins_before_HGTest)
 
 # number of proteins in STRING PPI network
@@ -31,12 +31,12 @@ Pval = data.frame(Pval, qval)
 rownames(Pval) = rownames(N_proteins)
 Pval = Pval[Pval$qval<0.05,]
 
-saveRDS(Pval, "Pval_ADRDP_Proteins.rds")
-saveRDS(significant_ADRs, "Significant_ADRs.rds")
-saveRDS(qval_significant_ADRs, "qval_significant_ADRs.rds")
+saveRDS(Pval, "data/Pval_ADRDP_Proteins.rds")
+saveRDS(significant_ADRs, "data/Significant_ADRs.rds")
+saveRDS(qval_significant_ADRs, "data/qval_significant_ADRs.rds")
 
 ADRDP_Proteins = ADRDP_Proteins_before_HGTest[significant_ADRs]
-saveRDS(ADRDP_Proteins, "ADRDP_Proteins.rds")
+saveRDS(ADRDP_Proteins, "data/ADRDP_Proteins.rds")
 
 
 

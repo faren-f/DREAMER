@@ -8,13 +8,13 @@ library(parallel)
 no_cores = detectCores()
 cl = makeCluster(no_cores-2)
 
-drug_ADR = readRDS("Data/drug_ADR.rds")
-drug_target = readRDS("Data/drug_target.rds")
-disease_symptom = readRDS("Data/disease_symptom.rds")
-disease_gene_protein = readRDS("Data/disease_gene_protein.rds")
-ADR_Drugs_After_removal = readRDS("Data/ADR_Drugs_After_removal.rds")
+drug_ADR = readRDS("data/preprocessed_graph/drug_ADR.rds")
+drug_target = readRDS("data/preprocessed_graph/drug_target.rds")
+disease_symptom = readRDS("data/preprocessed_graph/disease_symptom.rds")
+disease_gene_protein = readRDS("data/preprocessed_graph/disease_gene_protein.rds")
+ADR_Drugs_After_removal = readRDS("data/preprocessed_graph/ADR_Drugs_After_removal.rds")
 
-PPI = read.csv("Data/PPI_STRING.csv")
+PPI = read.csv("data/PPI_STRING.csv")
 PPI_Graph = graph_from_data_frame(PPI, directed = FALSE)
 PPI_Graph = simplify(PPI_Graph, remove.loops = TRUE, remove.multiple = TRUE)
 
@@ -105,7 +105,7 @@ ParLoop = function(i){
 
 ADRs = names(ADR_Drugs_After_removal)
 scores = parLapply(cl, sapply(ADRs, list), ParLoop) 
-saveRDS(scores, "Data/ProteinScores_DiffusedFromDrugSideDiseasesSide_STRING_AfterDrugRemoval.rds")
+saveRDS(scores, "data/ProteinScores_DiffusedFromDrugSideDiseasesSide_STRING_AfterDrugRemoval.rds")
 
 stopCluster(cl)
 

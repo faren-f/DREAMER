@@ -2,12 +2,12 @@ rm(list = ls())
 library(MASS)
 library(igraph)
 
-Scores = readRDS("Data/ProteinScores_DiffusedFromDrugSideDiseasesSide_STRING_AfterDrugRemoval.rds")
+Scores = readRDS("data/ProteinScores_DiffusedFromDrugSideDiseasesSide_STRING_AfterDrugRemoval.rds")
 
 ADRs_afterOrganRemoval = names(Scores)
-saveRDS(ADRs_afterOrganRemoval, "Data/ADRs_afterOrganRemoval.rds")
+saveRDS(ADRs_afterOrganRemoval, "data/ADRs_afterOrganRemoval.rds")
 
-PPI = read.csv("Data/PPI_STRING.csv")
+PPI = read.csv("data/PPI_STRING.csv")
 PPI_Graph = graph_from_data_frame(PPI, directed = FALSE)
 PPI_Graph = simplify(PPI_Graph, remove.loops = TRUE, remove.multiple = TRUE)
 
@@ -62,8 +62,8 @@ for(s in names(Scores)){
 }
 colnames(N) = c("adj_Pr_ADR_Protein", "adj_Pr_DP_Protein", "adj_Pr_Overlap")
 
-saveRDS(N,"Data/N_proteins_after_Drug_Removal.rds")
-saveRDS(ADRDP_proteins, "Data/ADRDP_Proteins_AfterDrugRemoval.rds")
+saveRDS(N,"data/N_proteins_after_Drug_Removal.rds")
+saveRDS(ADRDP_proteins, "data/ADRDP_Proteins_AfterDrugRemoval.rds")
 
 
 

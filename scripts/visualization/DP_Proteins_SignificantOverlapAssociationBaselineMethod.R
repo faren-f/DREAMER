@@ -5,8 +5,8 @@ library(parallel)
 no_cores = detectCores()
 cl = makeCluster(no_cores-2)
 
-disease_symptom = readRDS("Data/disease_symptom.rds")
-disease_gene_protein = readRDS("Data/disease_gene_protein.rds")
+disease_symptom = readRDS("data/preprocessed_graph/disease_symptom.rds")
+disease_gene_protein = readRDS("data/preprocessed_graph/disease_gene_protein.rds")
 
 targets = as.character(unique(disease_gene_protein$entrez_id_disaese))
 symptoms = unique(disease_symptom$meddra_id)
@@ -49,6 +49,6 @@ qval = p.adjust(Result$Fisher_Test_1SG, "BH")
 Result$qval = qval
 
 DP_Proteins_baseline = Result[Result$qval<0.05,]
-saveRDS(DP_Proteins_baseline, "Data/DP_Proteins_baseline.rds")
+saveRDS(DP_Proteins_baseline, "data/DP_Proteins_baseline.rds")
 
 

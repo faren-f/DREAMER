@@ -3,19 +3,19 @@ library(igraph)
 library(openxlsx)
 
 #Read data
-drug_ADR = readRDS("Data/drug_ADR.rds")
-drug_target = readRDS("Data/drug_target.rds")
-disease_symptom = readRDS("Data/disease_symptom.rds")
-drug = read.csv("Data/DrugNodes.csv")
-mondo_meddra_list = readRDS("Data/mondo_meddra_list.rds")
-mondo_meddra_df = readRDS("Data/mondo_meddra_df.rds")
+drug_ADR = readRDS("data/preprocessed_graph/drug_ADR.rds")
+drug_target = readRDS("data/preprocessed_graph/drug_target.rds")
+disease_symptom = readRDS("data/preprocessed_graph/disease_symptom.rds")
+drug = read.csv("data/knowledge_graph/DrugNodes.csv")
+mondo_meddra_list = readRDS("data/knowledge_graph/mondo_meddra_list.rds")
+mondo_meddra_df = readRDS("data/knowledge_graph/mondo_meddra_df.rds")
 
-drug_indication = read.table("Data/direct_drug_indications.csv", sep = "-")[,2:1]
+drug_indication = read.table("data/knowledge_graph/direct_drug_indications.csv", sep = "-")[,2:1]
 colnames(drug_indication) = c("drugbank_id", "mondo_id")
-Conversion_Proteins = read.csv("Data/Conversion_Proteins_new.csv")
+Conversion_Proteins = read.csv("data/knowledge_graph/Conversion_Proteins_new.csv")
 
-ADRDP_Proteins = readRDS("Data/ADRDP_Proteins.rds")
-Final_ADRs = readRDS("Data/Final_67_ADRs_STRING_AfterControlFor_OrganRemoval_and_IndicationDiffused.rds")
+ADRDP_Proteins = readRDS("data/ADRDP_Proteins.rds")
+Final_ADRs = readRDS("data/Final_67_ADRs_STRING_AfterControlFor_OrganRemoval_and_IndicationDiffused.rds")
 ADRDP_Proteins = ADRDP_Proteins[Final_ADRs[,1]]
 
 drug_name = unique(drug_ADR[,c(1,4)])
@@ -149,10 +149,10 @@ for(i in names(meddra_drug)){
   candidate_drug_protein = rbind(candidate_drug_protein, candidate_drug_protein_i)
 }
 
-write.table(indicative_drug_protein, "Data/TableS10_indicative_drugs_targets.csv", sep = ",")
-write.table(candidate_drug_protein, "Data/TableS11_candidate_drugs_targets.csv", sep = ",")
+write.table(indicative_drug_protein, "data/TableS10_indicative_drugs_targets.csv", sep = ",")
+write.table(candidate_drug_protein, "data/TableS11_candidate_drugs_targets.csv", sep = ",")
 
-write.xlsx(indicative_drug_protein, file = "Data/TableS10_indicative_drugs_targets.xlsx")
-write.xlsx(candidate_drug_protein, file = "Data/TableS11_candidate_drugs_targets.xlsx")
+write.xlsx(indicative_drug_protein, file = "data/TableS10_indicative_drugs_targets.xlsx")
+write.xlsx(candidate_drug_protein, file = "data/TableS11_candidate_drugs_targets.xlsx")
 
 

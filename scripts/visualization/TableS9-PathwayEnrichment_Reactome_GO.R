@@ -7,10 +7,10 @@ library(openxlsx)
 
 mart = useMart("ENSEMBL_MART_ENSEMBL", dataset = "hsapiens_gene_ensembl")
 
-Final_ADRs = readRDS("Data/Final_67_ADRs_STRING_AfterControlFor_OrganRemoval_and_IndicationDiffused.rds")
-ADRDP_Proteins = readRDS("Data/ADRDP_Proteins.rds")
-drug_ADR = readRDS("Data/drug_ADR.rds")
-disease_symptom = readRDS("Data/disease_symptom.rds")
+Final_ADRs = readRDS("data/Final_67_ADRs_STRING_AfterControlFor_OrganRemoval_and_IndicationDiffused.rds")
+ADRDP_Proteins = readRDS("data/ADRDP_Proteins.rds")
+drug_ADR = readRDS("data/preprocessed_graph/drug_ADR.rds")
+disease_symptom = readRDS("data/preprocessed_graph/disease_symptom.rds")
 
 ADRs = Final_ADRs[,1]
 ADRDP_Proteins = ADRDP_Proteins[ADRs]
@@ -55,10 +55,10 @@ for(i in names(ADRDP_Proteins)){
   Pathways_all_GO = rbind(Pathways_all_GO, Pathway_GO)
 }
 
-write.table(Pathways_all_Reactome, "Data/TableS9_Reactome.csv", sep = ",", row.names = FALSE)
-write.table(Pathways_all_GO, "Data/TableS9_GO.csv", sep = ",", row.names = FALSE)
+write.table(Pathways_all_Reactome, "data/TableS9_Reactome.csv", sep = ",", row.names = FALSE)
+write.table(Pathways_all_GO, "data/TableS9_GO.csv", sep = ",", row.names = FALSE)
 
-write.xlsx(Pathways_all_Reactome, file = "Data/TableS9_Reactome.xlsx")
-write.xlsx(Pathways_all_GO, file = "Data/TableS9_GO.xlsx")
+write.xlsx(Pathways_all_Reactome, file = "data/TableS9_Reactome.xlsx")
+write.xlsx(Pathways_all_GO, file = "data/TableS9_GO.xlsx")
 
 

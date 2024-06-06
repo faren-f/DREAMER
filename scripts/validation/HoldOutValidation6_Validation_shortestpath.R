@@ -1,8 +1,8 @@
 rm(list=ls())
 library(ggplot2)
 
-ShortestPath_drug = readRDS("Data/Shortest_path_drugs.rds")
-ShortestPath_disaese = readRDS("Data/Shortest_path_diseases.rds")
+ShortestPath_drug = readRDS("data/Shortest_path_drugs.rds")
+ShortestPath_disaese = readRDS("data/Shortest_path_diseases.rds")
 ###################
 
 p1 = c()

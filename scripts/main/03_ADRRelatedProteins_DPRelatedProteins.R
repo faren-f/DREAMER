@@ -1,10 +1,10 @@
 rm(list = ls())
 library(igraph)
 
-Pvalues = readRDS("Data/Pval_ADRProteins_DPProteins.rds")
+Pvalues = readRDS("data/Pval_ADRProteins_DPProteins.rds")
 
 #Physical PPI
-PPI = read.csv("Data/PPI_STRING.csv")
+PPI = read.csv("data/knowledge_graph/PPI_STRING.csv")
 PPI_Graph = graph_from_data_frame(PPI, directed = FALSE)
 PPI_Graph = simplify(PPI_Graph, remove.loops = TRUE, remove.multiple = TRUE)
 
@@ -24,8 +24,8 @@ for(i in names(Pvalues)){
   adj_pval_ADRRelatedProteins_DPRelatedProteins[[i]][["DP_Protein"]] = Pvalues[[i]][["DP_Protein"]][Pvalues[[i]][["DP_Protein"]]<0.05]
   
 }
-saveRDS(adj_pval_ADRRelatedProteins_DPRelatedProteins, "Data/adj_pval_ADRRelatedProteins_DPRelatedProteins.rds")
-saveRDS(ADRRelatedProteins_DPRelatedProteins, "Data/ADRRelatedProteins_DPRelatedProteins.rds")
+saveRDS(adj_pval_ADRRelatedProteins_DPRelatedProteins, "data/adj_pval_ADRRelatedProteins_DPRelatedProteins.rds")
+saveRDS(ADRRelatedProteins_DPRelatedProteins, "data/ADRRelatedProteins_DPRelatedProteins.rds")
 
 
 

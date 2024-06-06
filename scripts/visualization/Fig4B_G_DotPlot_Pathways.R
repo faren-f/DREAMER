@@ -8,10 +8,10 @@ library(biomaRt)
 library(ReactomePA)
 mart = useMart("ENSEMBL_MART_ENSEMBL", dataset = "hsapiens_gene_ensembl")
 
-Final_ADRs = readRDS("Data/Final_67_ADRs_STRING_AfterControlFor_OrganRemoval_and_IndicationDiffused.rds")
-ADRDP_Proteins = readRDS("Data/ADRDP_Proteins.rds")
-drug_ADR = readRDS("Data/drug_ADR.rds")
-disease_symptom = readRDS("Data/disease_symptom.rds")
+Final_ADRs = readRDS("data/Final_67_ADRs_STRING_AfterControlFor_OrganRemoval_and_IndicationDiffused.rds")
+ADRDP_Proteins = readRDS("data/ADRDP_Proteins.rds")
+drug_ADR = readRDS("data/preprocessed_graph/drug_ADR.rds")
+disease_symptom = readRDS("data/preprocessed_graph/disease_symptom.rds")
 
 
 Final_ADRs = unique(drug_ADR[drug_ADR$se_name %in% Final_ADRs,2])

@@ -9,18 +9,18 @@ library(parallel)
 no_cores = detectCores()
 cl = makeCluster(no_cores-2)
 
-drug_ADR = readRDS("Data/drug_ADR.rds")
-drug_target = readRDS("Data/drug_target.rds")
-disease_symptom = readRDS("Data/disease_symptom.rds")
-disease_gene_protein = readRDS("Data/disease_gene_protein.rds")
-ADRDP_Proteins = readRDS("Data/ADRDP_Proteins.rds")
+drug_ADR = readRDS("data/preprocessed_graph/drug_ADR.rds")
+drug_target = readRDS("data/preprocessed_graph/drug_target.rds")
+disease_symptom = readRDS("data/preprocessed_graph/disease_symptom.rds")
+disease_gene_protein = readRDS("data/preprocessed_graph/disease_gene_protein.rds")
+ADRDP_Proteins = readRDS("data/ADRDP_Proteins.rds")
 
 ADRs = names(ADRDP_Proteins)
 all_drugs = unique(drug_ADR$drugbank_id)
 all_diseases = unique(disease_symptom$mondo_id)
 
 
-PPI = read.csv("Data/PPI_STRING.csv")
+PPI = read.csv("data/knowledge_graph/PPI_STRING.csv")
 PPI_Graph = graph_from_data_frame(PPI, directed = FALSE)
 PPI_Graph = simplify(PPI_Graph, remove.loops = TRUE, remove.multiple = TRUE)
 
@@ -150,7 +150,7 @@ ParLoop = function(i){
 }
 
 Data = parLapply(cl, sapply(se, list), ParLoop) 
-saveRDS(Data, "Data/ProteinScores_DiffusedFromDrugSideDiseasesSide_Holdout_Analysis.rds")
+saveRDS(Data, "data/ProteinScores_DiffusedFromDrugSideDiseasesSide_Holdout_Analysis.rds")
 
 stopCluster(cl)
 

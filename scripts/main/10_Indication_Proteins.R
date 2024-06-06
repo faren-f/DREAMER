@@ -2,9 +2,9 @@ rm(list = ls())
 library(MASS)
 library(igraph)
 
-Scores = readRDS("Data/ProteinScores_DiffusedFromIndicationSide_STRING.rds")
-PPI = read.csv("Data/ProcessedData/Final_Network/PPI_STRING.csv")
+Scores = readRDS("data/ProteinScores_DiffusedFromIndicationSide_STRING.rds")
 
+PPI = read.csv("data/knowledge_graph/PPI_STRING.csv")
 PPI_Graph = graph_from_data_frame(PPI, directed = FALSE)
 PPI_Graph = simplify(PPI_Graph, remove.loops = TRUE, remove.multiple = TRUE)
 v = V(PPI_Graph)
@@ -45,7 +45,7 @@ for(s in ADRs){
   
 }
 
-saveRDS(indication_proteins, "Data/Indication_Proteins.rds")
+saveRDS(indication_proteins, "data/Indication_Proteins.rds")
 
 
 

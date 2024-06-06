@@ -1,7 +1,7 @@
 rm(list = ls())
 
-ADRDP_Proteins = readRDS("Data/ADRDP_Proteins.rds")
-ADRDP_Proteins_AfterDrugRemoval = readRDS("Data/ADRDP_Proteins_AfterDrugRemoval.rds")
+ADRDP_Proteins = readRDS("data/ADRDP_Proteins.rds")
+ADRDP_Proteins_AfterDrugRemoval = readRDS("data/ADRDP_Proteins_AfterDrugRemoval.rds")
 
 N_proteins = matrix(0,length(ADRDP_Proteins_AfterDrugRemoval),3)
 colnames(N_proteins) = c("N_before_remove", "N_after_remove", "N_intersection")
@@ -39,7 +39,7 @@ N_proteins$qval = qvalue
 N_proteins_sig = N_proteins[N_proteins$qval<0.05,]
 
 ADRs_withSignificantOverlap_afterDrugRemovalSameOrgan = rownames(N_proteins_sig)
-saveRDS(ADRs_withSignificantOverlap_afterDrugRemovalSameOrgan, "Data/ADRs_withSignificantOverlap_afterDrugRemovalSameOrgan.rds")
+saveRDS(ADRs_withSignificantOverlap_afterDrugRemovalSameOrgan, "data/ADRs_withSignificantOverlap_afterDrugRemovalSameOrgan.rds")
 
 
 

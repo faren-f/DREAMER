@@ -2,9 +2,9 @@ rm(list = ls())
 library(ggplot2)
 library(dplyr)
 
-Pval_ADRDP_Proteins = readRDS("Pval_ADRDP_Proteins.rds")
-Final_ADRs = readRDS("Data/Final_67_ADRs_STRING_AfterControlFor_OrganRemoval_and_IndicationDiffused.rds")
-intersected_ADRs = readRDS("Data/Intersected_ADRs_Physical_STRING.rds")
+Pval_ADRDP_Proteins = readRDS("data/Pval_ADRDP_Proteins.rds")
+Final_ADRs = readRDS("data/Final_67_ADRs_STRING_AfterControlFor_OrganRemoval_and_IndicationDiffused.rds")
+intersected_ADRs = readRDS("data/Intersected_ADRs_Physical_STRING.rds")
 
 Pval_ADRDP_Proteins = Pval_ADRDP_Proteins[Final_ADRs[,1],]
 rownames(Pval_ADRDP_Proteins) = Final_ADRs[,2]
@@ -18,7 +18,7 @@ ADR_Pval = data.frame(
   P_Value = Pval_ADRDP_Proteins_ranked[,2])
 
 #########################################################
-pdf("Data/FiguresS3_ADRs_sorted_by_pvals.pdf", width = 4, height = 7)
+pdf("data/FiguresS3_ADRs_sorted_by_pvals.pdf", width = 4, height = 7)
 
 fill = ifelse(ADR_Pval[,1] %in% intersected_ADRs, "red", "royalblue")
 ggplot() +

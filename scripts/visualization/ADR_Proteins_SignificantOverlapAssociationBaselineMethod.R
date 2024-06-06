@@ -5,8 +5,8 @@ library(parallel)
 no_cores = detectCores()
 cl = makeCluster(no_cores-2)
 
-drug_ADR = readRDS("Data/drug_ADR.rds")
-drug_target = readRDS("Data/drug_target.rds")
+drug_ADR = readRDS("data/preprocessed_graph/drug_ADR.rds")
+drug_target = readRDS("data/preprocessed_graph/drug_target.rds")
 
 targets = as.character(unique(drug_target$entrez_id_drug))
 ADRs = unique(drug_ADR$meddra_id)
@@ -49,6 +49,6 @@ Result$qval = qval
 
 ADR_Proteins_baseline = Result[Result$qval<0.05,]
 
-saveRDS(ADR_Proteins_baseline, "Data/ADR_Proteins_baseline.rds")
+saveRDS(ADR_Proteins_baseline, "data/ADR_Proteins_baseline.rds")
 
 

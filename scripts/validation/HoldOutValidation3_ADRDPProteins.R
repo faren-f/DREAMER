@@ -1,7 +1,7 @@
 rm(list = ls())
 
-N_proteins = readRDS("Data/N_proteins.rds")
-ADRDP_Proteins_before_HG_test = readRDS("Data/ADRDP_Proteins_before_HG_test.rds")
+N_proteins = readRDS("data/N_proteins.rds")
+ADRDP_Proteins_before_HG_test = readRDS("data/ADRDP_Proteins_before_HG_test.rds")
 rownames(N_proteins) = names(ADRDP_Proteins_before_HG_test)
 N_nodes = 12694
 
@@ -23,15 +23,15 @@ qval = p.adjust(Pval, method = "BH")
 significant_ADRs = rownames(N_proteins)[which(qval<0.05)]
 qval_significant_ADRs = qval[which(qval<0.05)]
 
-saveRDS(significant_ADRs, "Data/Significant_ADRs_Holdout.rds")
-saveRDS(qval_significant_ADRs, "Data/qval_significant_ADRs_Holdout.rds")
+saveRDS(significant_ADRs, "data/Significant_ADRs_Holdout.rds")
+saveRDS(qval_significant_ADRs, "data/qval_significant_ADRs_Holdout.rds")
 
 ADRDP_Proteins_Holdout = ADRDP_Proteins_before_HG_test[significant_ADRs]
-saveRDS(ADRDP_Proteins_Holdout, "Data/ADRDP_Proteins_Holdout.rds")
+saveRDS(ADRDP_Proteins_Holdout, "data/ADRDP_Proteins_Holdout.rds")
 
 # Removing the score columns to make the process faster 
 
-Scores = readRDS("Data/ProteinScores_DiffusedFromDrugSideDiseasesSide_Holdout_Analysis.rds")
+Scores = readRDS("data/ProteinScores_DiffusedFromDrugSideDiseasesSide_Holdout_Analysis.rds")
 
 Positive_Negative_DrugsDiseases = list()
 for(d in names(Scores)){
@@ -41,5 +41,5 @@ for(d in names(Scores)){
 I = names(Positive_Negative_DrugsDiseases)[names(Positive_Negative_DrugsDiseases) %in% names(ADRDP_Proteins_Holdout)]
 Positive_Negative_DrugsDiseases = Positive_Negative_DrugsDiseases[I]
 
-saveRDS(Positive_Negative_DrugsDiseases, "Data/Positive_Negative_DrugsDiseases_Holdout_Analysis.rds")
+saveRDS(Positive_Negative_DrugsDiseases, "data/Positive_Negative_DrugsDiseases_Holdout_Analysis.rds")
 
