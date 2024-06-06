@@ -44,6 +44,8 @@ openxlsx version 4.2.5.2\
 biomaRt version 2.58.2\
 ReactomePA version 1.46.0
 
+The codes that reproduce the ADR-related proteins, DP-related proteins, and ADR-DP-related proteins as well as controlling for confounding effects of indications of drugs are provided in the Main_Analysis folder.   
+
 
 
 
